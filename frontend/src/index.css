@@ -1,0 +1,59 @@
+/* ============================================================
+   index.css — Styles globaux de base
+   Les couleurs et polices précises seront affinées plus tard ;
+   ceci pose juste une base propre et cohérente.
+   ============================================================ */
+
+:root {
+  --color-primary: #b98a4a; /* couleur dorée/cuivrée du site Managem */
+  --color-dark: #2e2418;
+  --color-text: #1f1f1f;
+  --color-bg: #ffffff;
+  --color-muted: #6b6b6b;
+  --color-border: #e5e5e5;
+  --font-main: "Segoe UI", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--color-dark);
+  color: var(--color-dark);
+  padding: 12px 24px;
+  font-weight: 600;
+}
