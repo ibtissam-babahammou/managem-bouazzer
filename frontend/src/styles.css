@@ -708,6 +708,130 @@ p {
 .product-info .description {
   margin: 10px 0 20px;
 }
+
+/* ---------- Espace Administration ---------- */
+.admin-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 70vh;
+}
+.admin-sidebar {
+  background: #2e2418;
+  color: #fff;
+  padding: 30px 20px;
+}
+.admin-sidebar h2 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+.admin-sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.admin-sidebar a {
+  color: #d8cfc2;
+  padding: 10px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.admin-sidebar a.active,
+.admin-sidebar a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.admin-content {
+  padding: 30px;
+}
+.admin-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.admin-dashboard-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+.admin-card {
+  background: #f7f5f0;
+  padding: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+.admin-form {
+  border: 1px solid var(--color-border);
+  padding: 24px;
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+.admin-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: block;
+  margin: 14px 0 6px;
+}
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-border);
+}
+.admin-form .checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+.admin-form .checkbox-label input {
+  width: auto;
+}
+.admin-form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+}
+.admin-table button {
+  background: #f2f0ec;
+  border: none;
+  padding: 6px 12px;
+  margin-right: 6px;
+  font-size: 0.8rem;
+}
+.image-uploader {
+  margin-bottom: 10px;
+}
+.image-preview {
+  display: block;
+  max-width: 150px;
+  max-height: 150px;
+  margin-bottom: 10px;
+}
+.admin-messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.admin-message-card {
+  border: 1px solid var(--color-border);
+  padding: 16px;
+}
+
 @media (max-width: 768px) {
   .header-inner {
     flex-wrap: wrap;
@@ -741,4 +865,16 @@ p {
   .account-cards-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- Habillage générique des pages d'administration ---------- */
+.admin-categories,
+.admin-dashboard,
+.admin-faq,
+.admin-inventory,
+.admin-messages,
+.admin-orders,
+.admin-products,
+.admin-visits {
+  padding: 10px 0;
 }

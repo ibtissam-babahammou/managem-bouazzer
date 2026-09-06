@@ -70,10 +70,18 @@ async function cancelVisit(id) {
   return result.rows[0];
 }
 
+async function getAllVisitsAdmin() {
+  const result = await pool.query(
+    "SELECT * FROM visits ORDER BY visit_date DESC, visit_time DESC"
+  );
+  return result.rows;
+}
+
 module.exports = {
   getVisitsByUser,
   getVisitById,
   createVisit,
   rescheduleVisit,
   cancelVisit,
+  getAllVisitsAdmin,
 };

@@ -25,6 +25,16 @@ import MesAdresses from "./pages/MesAdresses";
 import ConnexionSecurite from "./pages/ConnexionSecurite";
 import Connaissances from "./pages/Connaissances";
 import PolitiqueVieVivee from "./pages/PolitiqueVieVivee";
+import AdminRoute from "./components/AdminRoute";
+import AdminLayout from "./components/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminProducts from "./pages/admin/AdminProducts";
+import AdminCategories from "./pages/admin/AdminCategories";
+import AdminInventory from "./pages/admin/AdminInventory";
+import AdminOrders from "./pages/admin/AdminOrders";
+import AdminVisits from "./pages/admin/AdminVisits";
+import AdminMessages from "./pages/admin/AdminMessages";
+import AdminFaq from "./pages/admin/AdminFaq";
 
 function App() {
   return (
@@ -53,6 +63,27 @@ function App() {
           <Route path="/mon-compte/securite" element={<ConnexionSecurite />} />
           <Route path="/mon-compte/connaissances" element={<Connaissances />} />
           <Route path="/politique-vie-privee" element={<PolitiqueVieVivee />} />
+
+          {/* ============================================================
+              Espace d'administration — protégé par AdminRoute
+              ============================================================ */}
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminLayout />
+              </AdminRoute>
+            }
+          >
+            <Route index element={<AdminDashboard />} />
+            <Route path="produits" element={<AdminProducts />} />
+            <Route path="categories" element={<AdminCategories />} />
+            <Route path="stock" element={<AdminInventory />} />
+            <Route path="commandes" element={<AdminOrders />} />
+            <Route path="rendez-vous" element={<AdminVisits />} />
+            <Route path="messages" element={<AdminMessages />} />
+            <Route path="faq" element={<AdminFaq />} />
+          </Route>
 
           {/* ============================================================
               Les autres pages seront ajoutées ici, une par une,

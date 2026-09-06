@@ -135,9 +135,39 @@ async function updateOrderStatus(id, userId, status) {
   return result.rows[0];
 }
 
+// ---------- Réservé au personnel autorisé ----------
+
+async function getAllOrdersAdmin() {
+  const result = await pool.query(
+    `SELECT o.*,
+        json_agg(json_build_object(
+          'product_id', oi.product_id,
+          'product_name', p.name,
+          'quantity', oi.quantity,
+          'price', oi.price_at_purchase
+        )) AS items
+     FROM orders o
+     JOIN order_items oi ON oi.order_id = o.id
+     JOIN products p ON p.id = oi.product_id
+     GROUP BY o.id
+     ORDER BY o.created_at DESC`
+  );
+  return result.rows;
+}
+
+async function updateOrderStatusAdmin(id, status) {
+  const result = await pool.query(
+    `UPDATE orders SET status = $1 WHERE id = $2 RETURNING *`,
+    [status, id]
+  );
+  return result.rows[0];
+}
+
 module.exports = {
   getOrdersByUser,
   getOrderById,
   createOrderFromCart,
   updateOrderStatus,
+  getAllOrdersAdmin,
+  updateOrderStatusAdmin,
 };

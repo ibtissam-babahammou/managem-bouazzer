@@ -57,6 +57,11 @@ export default function Header() {
                     <Link to="/mon-compte" onClick={() => setShowAccountMenu(false)}>
                       📇 Mon compte
                     </Link>
+                    {(user.role === "admin" || user.role === "employe") && (
+                      <Link to="/admin" onClick={() => setShowAccountMenu(false)}>
+                        🛠️ Administration
+                      </Link>
+                    )}
                     <button
                       onClick={() => {
                         logout();

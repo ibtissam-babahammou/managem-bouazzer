@@ -9,9 +9,13 @@ const express = require("express");
 const router = express.Router();
 const visitsController = require("../controllers/visits.controller");
 const { requireAuth, optionalAuth } = require("../middleware/auth.middleware");
+const requireAdmin = require("../middleware/requireAdmin");
 
 // GET /api/visits/mine -> mes rendez-vous (connexion requise)
 router.get("/mine", requireAuth, visitsController.listMyVisits);
+
+// GET /api/visits/admin/all -> tous les rendez-vous (personnel autorisé)
+router.get("/admin/all", requireAuth, requireAdmin, visitsController.listAllVisitsAdmin);
 
 // POST /api/visits -> réserver une visite (connexion optionnelle)
 router.post("/", optionalAuth, visitsController.createVisit);

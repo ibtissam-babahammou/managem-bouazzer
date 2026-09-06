@@ -86,9 +86,20 @@ async function cancelVisit(req, res) {
   }
 }
 
+async function listAllVisitsAdmin(req, res) {
+  try {
+    const visits = await visitModel.getAllVisitsAdmin();
+    res.json(visits);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erreur lors de la récupération des rendez-vous." });
+  }
+}
+
 module.exports = {
   listMyVisits,
   createVisit,
   rescheduleVisit,
   cancelVisit,
+  listAllVisitsAdmin,
 };

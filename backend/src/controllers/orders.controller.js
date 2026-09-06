@@ -69,9 +69,41 @@ async function cancelOrder(req, res) {
   }
 }
 
+// ---------- Réservé au personnel autorisé ----------
+
+async function listAllOrdersAdmin(req, res) {
+  try {
+    const orders = await orderModel.getAllOrdersAdmin();
+    res.json(orders);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erreur lors de la récupération des commandes." });
+  }
+}
+
+async function updateStatusAdmin(req, res) {
+  try {
+    const { status } = req.body;
+    const validStatuses = ["en_attente", "confirmee", "livree", "annulee"];
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({ message: "Statut invalide." });
+    }
+    const order = await orderModel.updateOrderStatusAdmin(req.params.id, status);
+    if (!order) {
+      return res.status(404).json({ message: "Commande introuvable." });
+    }
+    res.json(order);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erreur lors de la mise à jour de la commande." });
+  }
+}
+
 module.exports = {
   listOrders,
   getOrder,
   checkout,
   cancelOrder,
+  listAllOrdersAdmin,
+  updateStatusAdmin,
 };

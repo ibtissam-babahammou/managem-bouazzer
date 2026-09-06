@@ -33,6 +33,8 @@ app.use("/api/visits", require("./routes/visits.routes"));
 app.use("/api/contact", require("./routes/contactMessages.routes"));
 app.use("/api/faqs", require("./routes/faq.routes"));
 app.use("/api/wishlist", require("./routes/wishlist.routes"));
+app.use("/api/upload", require("./routes/upload.routes"));
+app.use("/api/inventory", require("./routes/inventory.routes"));
 app.use("/api/categories", require("./routes/categories.routes"));
 app.use("/api/products", require("./routes/products.routes"));
 app.use("/api/cart", require("./routes/cart.routes"));
